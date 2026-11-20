@@ -1,0 +1,39 @@
+{
+  "source": "Open University Learning Analytics Dataset (OULAD)",
+  "raw_files": {
+    "studentInfo.csv": 32593,
+    "studentRegistration.csv": 32593,
+    "studentVle.csv": 10655280,
+    "vle.csv": 6364,
+    "courses.csv": 22,
+    "assessments.csv": 206,
+    "studentAssessment.csv": 173912
+  },
+  "output_rows": 32593,
+  "output_columns": 43,
+  "missing_values": {
+    "imd_band": 1111,
+    "date_registration": 45,
+    "date_unregistration": 22521,
+    "early_mean_score": 12491,
+    "withdrawal_stage_order": 22437
+  },
+  "duplicate_learner_course_keys": 0,
+  "model_evaluation": "model_evaluation.json",
+  "cleaning_decisions": [
+    "Kept one learner-course-presentation record from studentInfo and joined registration/course metadata.",
+    "Aggregated VLE clicks by learner-course-presentation in chunks; only first 28 days used for early engagement features.",
+    "No first-28-day VLE interaction / activity-type record was treated as zero clicks; absence of an early assessment submission was treated as zero submissions.",
+    "The 93 withdrawn registrations with no recorded unregistration day are labelled Unknown withdrawal date; non-withdrawn registrations are Not withdrawn.",
+    "Question-mark placeholders in source CSVs were parsed as missing values; missing demographics and early assessment scores were not imputed in the exported dataset.",
+    "Missing demographic and assessment values were not imputed.",
+    "Learner identifier removed from exported analysis table.",
+    "No records were removed solely because a demographic field was missing."
+  ],
+  "definitions": {
+    "engaged": "At least 10 VLE clicks and at least 3 active days in first 28 days.",
+    "at_risk": "Zero first-28-day clicks or clicks at/below full-dataset 25th percentile (31.00).",
+    "successful_completion": "Pass or Distinction final_result.",
+    "limitations": "VLE click counts are not video watch-time; observational associations do not establish causation."
+  }
+}

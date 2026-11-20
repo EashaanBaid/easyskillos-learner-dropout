@@ -1,0 +1,23 @@
+{
+  "target": "Pass or Distinction",
+  "split": "Stratified 80/20 hold-out; random_state=42",
+  "baseline_features": "Prior context: studied credits and previous attempts, plus course, presentation and learner group.",
+  "early_signal_features": "Baseline plus first-28-day clicks, active days, assessment submissions and mean score.",
+  "baseline": {
+    "test_rows": 6519,
+    "roc_auc": 0.6490535296175991,
+    "accuracy": 0.6123638594876515,
+    "precision": 0.5866414618777568,
+    "recall": 0.6051348716282093,
+    "f1": 0.5957446808510638
+  },
+  "with_early_signals": {
+    "test_rows": 6519,
+    "roc_auc": 0.8217501709464817,
+    "accuracy": 0.7445927289461574,
+    "precision": 0.7071596244131455,
+    "recall": 0.783230419239519,
+    "f1": 0.7432536622976099
+  },
+  "interpretation": "Hold-out discrimination improved when early signals were added. This does not prove interventions cause completion."
+}
